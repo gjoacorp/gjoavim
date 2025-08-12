@@ -1,30 +1,53 @@
-# custom_vim
+# gjoavim
 
-## Introduction
+## What is gjoavim?
 
-This is my current Vim configuration that I've built on over the past few years. I hope that you find it useful!
+gjoavim is my personal Vim configuration that I've been curating over the past 5+ years.
 
-I recommend that you read (or skim) through this README before completing your installation.
+## Installation guide
 
-## Recommended installation procedure
+1. My configuration uses the plugin manager [Vundle](https://github.com/VundleVim/Vundle.vim). You will need to run
+  
+  ```bash
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  ```
+  
+  before proceeding if you don't already have Vundle installed.
+  
+2. You are <ins>**strongly recommended**</ins> to fork this repository. This step is especially important if you want to sync your Vim configuration across multiple devices. Even if you don't want to do this now, you may want the option to do so in the future.
 
-1. Run ``git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`` to install [Vundle](https://github.com/VundleVim/Vundle.vim).
-2. Fork this repository.
-3. Clone your fork to a location of your choice (e.g. `~/custom_vim_fork`).
-4. If you already have a `.vimrc`, rename it to something else (e.g. `.vimrc2`).
-5. Create a symbolic link to `~/YOUR_PATH_TO/custom_vim_fork/.vimrc` by running `ln -s ~/YOUR_PATH_TO/custom_vim_fork/vimrc ~/.vimrc`.
-6. If you want to use the UltiSnips plugin (and want to use my snippets), create a symbolic link to `~/YOUR_PATH_TO/custom_vim_fork/my_snips` by running `ln -s ~/YOUR_PATH_TO/custom_vim_fork/my_snips ~/.vim/my_snips`.
-7. Open Vim, then to install the plugins you want (**read below first**) enter the command `:PluginInstall`.
+3. If you already have a `.vimrc` in your home directory, rename it to something else (e.g. `.vimrc2`).
+4. Create a symbolic link to `YOUR_PATH_TO_FORK/vimrc` by running:
+```bash
+ln -s YOUR_PATH_TO_FORK/vimrc ~/.vimrc
+```
+The reason for doing this is that you will never (and definitely should not) edit `~/.vimrc` directly, but will instead edit `YOUR_PATH_TO_FORK/vimrc`. By doing so, you can easily sync changes across your devices with a simple `git pull`. It took me an embarassingly long amount of time for me to realise to do this myself and, as a result, I had different Vim configurations on my laptop and home computer (trust me, you don't want this).
 
-## Plugins
+5. If you plan on using the [UltiSnips](https://github.com/SirVer/ultisnips) plugin, create a symbolic link to `YOUR_PATH_TO_FORK/my_snips` by running
+```bash
+ln -s YOUR_PATH_TO_FORK/my_snips ~/.vim/my_snips
+```
+In a similar vein as the discussion above, this will sync your snippets across multiple devices. You won't (and should not) edit `~/.vim/my_snips`, but instead edit 
+`YOUR_PATH_TO_FORK/my_snips`.
 
-Below is a list of the plugins that I use and that will be installed when running `:PluginInstall`. 
-I've included a brief description of what each plugin does, but would encourage you to visit the links yourself to see what they do in much greater detail. 
+> [!IMPORTANT]
+> Before proceeding with the next (final) step, you should read the following section on plugins first.
 
-If you don't want to install a particular plugin, remove the line(s) `Plugin '<plugin I don't want>'` from `~/YOUR_PATH_TO/custom_vim_fork/vimrc` before running `:PluginInstall`.
-You may also have to remove additional lines in `~/YOUR_PATH_TO/custom_vim_fork/vimrc` relating to the removed plugin.
+6. Open Vim, then run `:PluginInstall` to install the plugins.
 
-- [Vundle](https://github.com/VundleVim/Vundle.vim) - Vim plugin manager
+## gjoavim plugins
+
+Below is a list of all of the plugins that (with no changes) will be installed when running `:PluginInstall`.
+
+I've included a brief description of what each plugin is, and you can always visit their repositories for more information.
+
+It's highly likely that some of the plugins listed below are not applicable to your workflow. If you don't want to install a particular plugin, remove the line(s) `Plugin '<plugin I don't want>'` from `YOUR_PATH_TO_FORK/vimrc` before running `:PluginInstall`. You may also have to remove additional lines from `YOUR_PATH_TO_FORK/vimrc` relating to the removed plugin to avoid errors. Moreover, some of these plugins may require additional steps to get them working correctly (refer to the necessary repository for guidance if this is the case).
+
+> [!WARNING]
+> Though I use these plugins myself, I cannot guarantee their security nor functionality. By running `:PluginInstall`, you acknowledge that you are installing them at your own risk.
+
+### Plugin list
+
 - [NERDTree](https://github.com/preservim/nerdtree) - File explorer 
 - [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) - Git integration for NERDTree
 - [indentLine](https://github.com/Yggdroot/indentLine) - Vertical lines displayed for line indents
@@ -39,16 +62,11 @@ You may also have to remove additional lines in `~/YOUR_PATH_TO/custom_vim_fork/
 - [rainbow](https://github.com/luochen1990/rainbow) - Colourful scoped braces
 - [vim-devicons](https://github.com/ryanoasis/vim-devicons) - Nice icon support
 
-**Note:** Some of these plugins may require additional steps to get them working correctly. Visit the plugin's repository for guidance if this is the case.
+## Closing remarks
 
-## Adding your own customisations
+Just to reiterate, make changes to `YOUR_PATH_TO_FORK/vimrc`, not to `~/.vimrc` directly. Failing to do so will lead to diverging configurations across devices and confusion.
 
-If you want to make your own customisations and have followed the recommended installation procedure, all you need to do is make changes to `~/YOUR_PATH_TO/custom_vim_fork` since you will
-have already created symbolic links. Critically, this means that you don't need to edit your `~/.vimrc`, but should instead edit `~/YOUR_PATH_TO/custom_vim_fork/vimrc`.
+Thank you for reading. I hope that you find this repository useful!
 
-You can then commit your changes and, hey presto, you have a portable Vim configuration that you can easily set up on any machine.
-
-## The my_snips directory
-
-The `my_snips` directory mostly contains custom LaTeX macros which interface with the UltiSnips plugin. To learn more, visit the UltiSnips repository.
-Additionally, if you care about LaTeX, [this](https://castel.dev/post/lecture-notes-1/) is an excellent blog discussing LaTeX snippets.
+## Related projects
+Neovim ~~users~~ traitors may be interested in checking out [sonstgennant/config_neovim](https://github.com/sonstgenannt/config_neovim), which was inspired by this repository.
