@@ -11,6 +11,7 @@ Plugin 'yggdroot/indentline'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'junegunn/fzf'
 Plugin 'sainnhe/everforest'
+Plugin 'bfrg/vim-c-cpp-modern'
 Plugin 'vim-airline/vim-airline'
 Plugin 'SirVer/ultisnips' 
 Plugin 'lervag/vimtex'
@@ -37,13 +38,15 @@ set et
 set ts=2
 set shiftwidth=2
 set softtabstop=2
-set nu
+set nu rnu
 set nuw=10
 
 if has('syntax')
  syntax enable             
  silent! colorscheme everforest
 endif
+
+autocmd User GoyoEnter set nu rnu
 
 let g:tex_conceal = "" 
 let g:vimtex_syntax_conceal_disable = 1
@@ -78,6 +81,13 @@ map <Leader>h <Plug>(easymotion-linebackward)
 
 map <C-n> <Plug>(easymotion-bd-f)
 nmap <C-n> <Plug>(easymotion-overwin-f)
+
+nmap <Leader>b <Plug>(easymotion-bd-b) " requires double press?
+nmap <Leader>e <Plug>(easymotion-bd-e)
+nmap <Leader>w <Plug>(easymotion-bd-w)
+
+nmap / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 
 nnoremap <leader>t :tabnew<CR>
 nnoremap <leader>q :tabclose<CR>
