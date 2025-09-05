@@ -35,6 +35,7 @@ set incsearch
 set wildmenu 
 set background=dark
 set et 
+set cul
 set ts=2
 set shiftwidth=2
 set softtabstop=2
